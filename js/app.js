@@ -22,8 +22,10 @@
  * Define Global Variables
  * 
 */
-
-
+/*
+const navbar = document.querySelector(".navbar__list");
+const sectionClass = document.querySelectorAll(".landing__container");
+*/
 /**
  * End Global Variables
  * Start Helper Functions
@@ -39,10 +41,23 @@
 */
 
 // build the nav
+const navbar = document.querySelector("#navbar__list");
+const sectionClass = document.querySelectorAll(".landing__container");
+//for each section, push data-nav to nav bar sectionClass.dataset.nav
+
+for (let i = 0; i < sectionClass.length; i++) {
+    const item = document.createElement('li');
+    const name = sectionClass[i].dataset.nav;
+      // Create a text node with the name and append it to the navigation item
+    const itemName = document.createTextNode(name);
+    item.appendChild(itemName);
+     // Append the navigation item to the navbar
+    navbar.appendChild(item);
+};
 
 
 // Add class 'active' to section when near top of viewport
-
+//if id is near top of viewport, add class active, else remove class active 
 
 // Scroll to anchor ID using scrollTO event
 
