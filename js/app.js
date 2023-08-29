@@ -10,68 +10,86 @@
  * JS Version: ES2015/ES6
  * 
  * JS Standard: ESlint
- * 
-*/
 
-/**
- * Comments should be present at the beginning of each procedure and class.
- * Great to have comments before crucial code sections within the procedure.
-*/
 
-/**
- * Define Global Variables
- * 
-*/
+
+
 /*
-const navbar = document.querySelector(".navbar__list");
-const sectionClass = document.querySelectorAll(".landing__container");
-*/
-/**
- * End Global Variables
  * Start Helper Functions
  * 
 */
-
-
-
+//Check if element is in viewport
+function isInViewport(element) {
+  const rect = element.getBoundingClientRect();
+  return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
 /**
  * End Helper Functions
  * Begin Main Functions
  * 
 */
+const navbar = document.getElementById("navbar__list");
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll("a");
+const activeSection = document.querySelector(".active");
+const navItems = document.querySelectorAll("#navbar__list li");
 
-// build the nav
-const navbar = document.querySelector("#navbar__list");
-const sectionClass = document.querySelectorAll(".landing__container");
+//NAV BUILDING
 //for each section, push data-nav to nav bar sectionClass.dataset.nav
-
-for (let i = 0; i < sectionClass.length; i++) {
+for (let i = 0; i < sections.length; i++) {
+  //create a link 
+    const link = document.createElement('a');
+    const linkName = `#section${[i+1]}`;
+    link.setAttribute('href',linkName);
     const item = document.createElement('li');
-    const name = sectionClass[i].dataset.nav;
+    const name = document.querySelectorAll('section')[i].dataset.nav;
       // Create a text node with the name and append it to the navigation item
     const itemName = document.createTextNode(name);
     item.appendChild(itemName);
+    item.classList.add('menu__link');
+    //append item to link
+    link.appendChild(item);
      // Append the navigation item to the navbar
-    navbar.appendChild(item);
+    navbar.appendChild(link);
 };
 
 
 // Add class 'active' to section when near top of viewport
-//if id is near top of viewport, add class active, else remove class active 
+function makeActive() { sections.forEach(section => {
+  if (isInViewport(section)){
+    section.classList.add("active");
+    navLinks.forEach(navLink => {
+      if(navLink.getAttribute('href') == section.getAttribute('id')){
+        navLink.classList.add("activeLink");
+      }
+      else{
+        navLink.classList.remove('activeLink')
+      }
+    })
+  }
+  else{
+    section.classList.remove("active");
+  }
+})
+};
 
-// Scroll to anchor ID using scrollTO event
+//call function when user scrolls
+document.addEventListener("scroll", makeActive);
 
+//HIGHLIGHT NAVBAR LINK WHEN SECTION IS ACTIVE
 
-/**
- * End Main Functions
- * Begin Events
- * 
-*/
-
-// Build menu 
-
-// Scroll to section on link click
-
-// Set sections as active
-
+//Scroll to section
+navItems.forEach(navItem => {
+  navItem.addEventListener("click", function(event) {
+    event.preventDefault();
+    const targetSectionId = navItem.getAttribute("href");
+    document.querySelector(targetSectionId).scrollIntoView({ behavior: "smooth" });
+    makeActive();
+  });
+});
 
