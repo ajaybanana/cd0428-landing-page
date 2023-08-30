@@ -37,7 +37,7 @@ const navbar = document.getElementById("navbar__list");
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll("a");
 const activeSection = document.querySelector(".active");
-const navItems = document.querySelectorAll("#navbar__list li");
+const navItems = document.querySelectorAll("nav ul li");
 
 //NAV BUILDING
 //for each section, push data-nav to nav bar sectionClass.dataset.nav
@@ -65,10 +65,12 @@ function makeActive() { sections.forEach(section => {
     section.classList.add("active");
     navLinks.forEach(navLink => {
       if(navLink.getAttribute('href') == section.getAttribute('id')){
-        navLink.classList.add("activeLink");
+        navLink.classList.add("active")
+        console.log(true);
       }
       else{
-        navLink.classList.remove('activeLink')
+        navLink.classList.remove("active")
+        console.log(false)
       }
     })
   }
@@ -77,6 +79,26 @@ function makeActive() { sections.forEach(section => {
   }
 })
 };
+// Create an Intersection Observer instance
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    const section = entry.target; // Use entry.target directly
+    const navLink = document.querySelector(`a[href="#${section.id}"]`);
+
+    if (entry.isIntersecting) {
+      section.classList.add('active');
+      navLink.classList.add('active');
+    } else {
+      section.classList.remove('active');
+      navLink.classList.remove('active');
+    }
+  });
+}, { threshold: 0.5 }); // Adjust the threshold as needed
+
+// Observe each section
+sections.forEach(section => {
+  observer.observe(section);
+});
 
 //call function when user scrolls
 document.addEventListener("scroll", makeActive);

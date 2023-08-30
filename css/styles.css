@@ -90,11 +90,6 @@ section {
 .navbar__menu a{
     text-decoration: none;
 }
-.activeLink{
-    background: #919393;
-    color: #262525;
-    transition: ease 0.3s all;
-}
 
 /* Header Styles */
 .page__header {
@@ -213,6 +208,9 @@ section.active .landing__container::before {
 section.active .landing__container::after {
     opacity: 1;
     animation: rotate 5s linear 0s infinite forwards reverse;
+}
+nav ul a.active li.menu__link{
+    background-color: #c7c2c2;
 }
 
 /* Section Active Styles Keyframe Animations */
