@@ -252,7 +252,7 @@ nav ul a.active li.menu__link{
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 600px)and (max-width: 768px) {
     .navbar__menu li {
         display: inline-block;
         font-size:16px;
@@ -278,7 +278,7 @@ nav ul a.active li.menu__link{
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 768px) and (max-width:992px) {
     .navbar__menu li {
         display: inline-block;
         font-size:20px;
