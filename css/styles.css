@@ -226,3 +226,86 @@ nav ul a.active li.menu__link{
 		           rotate(-360deg);
 	}
 }
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    /* Navigation Styles*/
+
+.navbar__menu li {
+    display: inline-block;
+    font-size:13px;
+}
+
+.navbar__menu .menu__link:hover {
+    background: #333;
+    color: #fff;
+    padding:3px;
+    margin: 0; /* Remove any margin */
+    height: auto; /* Or set a fixed height if needed */
+}
+nav ul a.active li.menu__link{
+    background-color: #c7c2c2;
+    padding:3px;
+    margin: 0; /* Remove any margin */
+    height: auto; /* Or set a fixed height if needed */
+}
+
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .navbar__menu li {
+        display: inline-block;
+        font-size:16px;
+    }
+    
+    .navbar__menu .menu__link:hover {
+        background: #333;
+        color: #fff;
+    }
+    .navbar__menu .menu__link:hover {
+        background: #333;
+        color: #fff;
+        padding:3px;
+        margin: 0; /* Remove any margin */
+        height: auto; /* Or set a fixed height if needed */
+    }
+    nav ul a.active li.menu__link{
+        background-color: #c7c2c2;
+        padding:3px;
+        margin: 0; /* Remove any margin */
+        height: auto; /* Or set a fixed height if needed */
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .navbar__menu li {
+        display: inline-block;
+        font-size:20px;
+    }
+    
+    .navbar__menu .menu__link:hover {
+        background: #333;
+        color: #fff;
+        transition: ease 0.3s all;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .navbar__menu li {
+        display: inline-block;
+        font-size:20px;
+    }
+    
+    .navbar__menu .menu__link:hover {
+        background: #333;
+        color: #fff;
+        transition: ease 0.3s all;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+}
